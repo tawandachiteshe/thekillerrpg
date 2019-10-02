@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=1]
+
+[node name="bullet" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource( 1 )
+bullet_radius = 6
+bulletColor = Color( 0.913725, 0.478431, 0.478431, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="."]
+[connection signal="body_shape_entered" from="." to="." method="_on_bullet_body_shape_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
